@@ -1,0 +1,26 @@
+#tools {
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 20px;
+  margin: 50px;
+}
+.tools-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+}
+@media only screen and (max-width: 576px) {
+  .tools-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #tools {
+    margin: 10px;
+  }
+}
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+  .tools-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #tools {
+    margin: 25px;
+  }
+}
