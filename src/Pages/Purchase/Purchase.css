@@ -1,0 +1,17 @@
+.detail-container {
+  max-width: 700px;
+}
+.detail-description {
+  border: 2px solid orangered;
+  border-radius: 20px;
+}
+.order-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 576px) {
+  .order-form {
+    width: 90%;
+  }
+}

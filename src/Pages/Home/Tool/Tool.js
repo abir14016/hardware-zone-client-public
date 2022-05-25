@@ -6,8 +6,12 @@ const Tool = ({ tool }) => {
     const [seeMore, setSeeMore] = useState(true);
     const [seeLess, setSeeLess] = useState(true);
 
-    const { name, image, price, minimumOrder, availableQuantity, description } = tool;
+    const { _id, name, image, price, minimumOrder, availableQuantity, description } = tool;
     const navigate = useNavigate();
+
+    const navigateToToolDetail = id => {
+        navigate(`/tool/${id}`);
+    }
 
     const handleSeeMore = () => {
         setSeeMore(!seeMore);
@@ -45,7 +49,7 @@ const Tool = ({ tool }) => {
                 <h6 className='text-warning fs-4'>$ {price}</h6>
             </div>
             <div className='text-center'>
-                <button className='purchase-button'>PURCHASE</button>
+                <button onClick={() => navigateToToolDetail(_id)} className='purchase-button'>PURCHASE</button>
             </div>
         </div>
     );
