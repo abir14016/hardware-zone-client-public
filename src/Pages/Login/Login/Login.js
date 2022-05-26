@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImage from '../../../images/utilities/login-logo.png';
 import google from '../../../images/social/google-logo.png';
 import './Login.css';
@@ -16,8 +16,12 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    const navigate = useNavigate();
+
     if (gUser || user) {
-        console.log(gUser || user);
+        navigate(from, { replace: true });
     }
 
     const handleLogin = event => {
