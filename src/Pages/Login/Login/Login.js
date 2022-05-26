@@ -11,17 +11,27 @@ const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
         signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
+        eUser,
+        eLoading,
+        eError,
     ] = useSignInWithEmailAndPassword(auth);
 
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
 
-    if (gUser || user) {
+    if (gUser || eUser) {
         navigate(from, { replace: true });
+    }
+
+    let eErrorElement;
+    if (eError) {
+        eErrorElement = <p style={{ color: "red" }}>Error: {eError.message}</p>
+    }
+
+    let gErrorElement;
+    if (gError) {
+        gErrorElement = <p style={{ color: "red" }}>Error: {gError.message}</p>
     }
 
     const handleLogin = event => {
@@ -33,7 +43,7 @@ const Login = () => {
     return (
         <div className='pt-5'>
             <h2 className='text-primary text-center'>Welcome To Login Page</h2>
-            <Form onSubmit={handleLogin} className='form-container bg-dark text-white p-4 my-4 rounded'>
+            <Form onSubmit={handleLogin} className='form-container bg-dark text-white p-4 rounded'>
                 <div className='text-center py-2'>
                     <img style={{ width: 80 }} src={loginImage} alt="" />
                 </div>
@@ -48,6 +58,9 @@ const Login = () => {
                     <Form.Control type="password" name='password' placeholder="Password" />
                 </Form.Group>
 
+                {(eLoading) && <p className='text-warning'>Loading...</p>}
+                {(eError) && eErrorElement}
+
                 <div className='text-center'>
                     <Button variant="primary" type="submit">
                         Login
@@ -58,12 +71,15 @@ const Login = () => {
 
                 <p>Forget password?<button className='text-primary text-decoration-none btn btn-link'>Reset Password</button></p>
 
-                <div>
+                {/* <div>
                     <div className='d-flex align-items-center'>
                         <div style={{ height: "1px" }} className='bg-primary w-50'></div>
                         <p className='mt-2 px-2'>or</p>
                         <div style={{ height: "1px" }} className='bg-primary w-50'></div>
                     </div>
+
+                    {(gLoading) && <p className='text-warning'>Loading...</p>}
+                    {(gError) && gErrorElement}
 
 
                     <div>
@@ -74,9 +90,29 @@ const Login = () => {
                             <span className='px-2'>Google sign in</span>
                         </button>
                     </div>
-                </div>
+                </div> */}
 
             </Form>
+            <div className='form-container bg-dark text-white p-4 rounded'>
+                <div className='d-flex align-items-center'>
+                    <div style={{ height: "1px" }} className='bg-primary w-50'></div>
+                    <p className='mt-2 px-2'>or</p>
+                    <div style={{ height: "1px" }} className='bg-primary w-50'></div>
+                </div>
+
+                {(gLoading) && <p className='text-warning'>Loading...</p>}
+                {(gError) && gErrorElement}
+
+
+                <div>
+                    <button
+                        onClick={() => signInWithGoogle()}
+                        className='btn btn-primary d-block mx-auto social-login-button'>
+                        <img style={{ width: "32px" }} src={google} alt="" />
+                        <span className='px-2'>Google sign in</span>
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

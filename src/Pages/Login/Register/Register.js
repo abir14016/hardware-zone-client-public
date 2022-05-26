@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import google from '../../../images/social/google-logo.png';
 import auth from '../../../firebase.init';
@@ -9,31 +9,31 @@ import registerImage from '../../../images/utilities/register-logo.png';
 
 const Register = () => {
     const [agree, setAgree] = useState(false);
-    const [err, setErr] = useState('');
     const [name, setName] = useState('');
     const [photoURL, setPhoURL] = useState('');
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
-
     const [
         createUserWithEmailAndPassword,
-        Euser,
-        Eloading,
-        Eerror,
+        eUser,
+        eLoading,
+        eError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-
-    if (Euser) {
-        console.log(Euser);
+    const navigate = useNavigate();
+    if (eUser || gUser) {
+        navigate('/')
     }
 
-    let errorElement;
-    if (Eerror) {
-        errorElement = <p style={{ color: "red" }}>Error: {Eerror.message}</p>
+    let eErrorElement;
+    if (eError) {
+        eErrorElement = <p style={{ color: "red" }}>Error: {eError.message}</p>
     }
 
-    const [updateProfile] = useUpdateProfile(auth);
-
+    let gErrorElement;
+    if (gError) {
+        gErrorElement = <p style={{ color: "red" }}>Error: {gError.message}</p>
+    }
 
     const handleNameField = (e) => {
         setName(e.target.value)
@@ -43,7 +43,7 @@ const Register = () => {
         setPhoURL(e.target.value);
     }
 
-
+    const [updateProfile] = useUpdateProfile(auth);
 
     const handleRegister = async (event) => {
         event.preventDefault();
@@ -88,17 +88,17 @@ const Register = () => {
                     <Form.Check className={agree ? 'text-success' : 'text-danger'} onClick={() => setAgree(!agree)} type="checkbox" name='terms' label="Accept terms & condition" />
                 </Form.Group>
 
+                {(eLoading) && <p className='text-warning'>Loading...</p>}
+                {(eError) && eErrorElement}
+
                 <div className='text-center'>
                     <Button variant="primary" type="submit" disabled={!agree}>
                         Register
                     </Button>
                 </div>
                 <p>Already have an acount? <Link to="/login" className='text-primary text-decoration-none'>Please Login</Link></p>
-                {Eerror && errorElement}
 
-                {
-                    <p style={{ color: "red" }}>{err}</p>
-                }
+                {/* {(gError || eError) && errorElement} */}
 
                 <div>
                     <div className='d-flex align-items-center'>
@@ -107,6 +107,8 @@ const Register = () => {
                         <div style={{ height: "1px" }} className='bg-primary w-50'></div>
                     </div>
 
+                    {(gLoading) && <p className='text-warning'>Loading...</p>}
+                    {(gError) && gErrorElement}
 
                     <div>
                         <button
