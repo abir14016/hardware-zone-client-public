@@ -1,3 +1,19 @@
 .side-nav {
   height: 100vh;
 }
+.profile-container {
+  background-image: linear-gradient(to right, purple, indigo);
+  margin-bottom: 50px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard-header {
+    display: block;
+  }
+}

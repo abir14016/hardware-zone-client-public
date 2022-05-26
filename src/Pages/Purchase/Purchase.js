@@ -2,10 +2,10 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import updateImage from '../../images/utilities/update.png';
 import UseToolDetail from '../../Hooks/UseToolDetail';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import './Purchase.css';
 import { Button, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import axios from 'axios';
 
@@ -31,11 +31,11 @@ const Purchase = () => {
             quantity: quantity
         }
 
-        axios.post('http://localhost:5000/myorder', data)
+        axios.post(`http://localhost:5000/myorder`, data)
             .then(response => {
                 const { data } = response;
                 if (data.insertedId) {
-                    // console.log(data);
+                    toast.success("Order Successfull")
                 }
             })
     }
@@ -97,9 +97,11 @@ const Purchase = () => {
                         <Form.Control type="number" name='quantity' defaultValue={minimumOrder} min={minimumOrder} max={availableQuantity} placeholder="Enter Quantity" />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
-                        Purchase
-                    </Button>
+                    <div className='text-center'>
+                        <Button variant="primary" type="submit">
+                            Order
+                        </Button>
+                    </div>
                 </Form>
             </div>
         </div>

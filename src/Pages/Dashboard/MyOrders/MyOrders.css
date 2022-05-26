@@ -1,0 +1,9 @@
+.my-orders {
+  width: 75%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 576px) {
+  .my-orders {
+    width: 100%;
+  }
+}

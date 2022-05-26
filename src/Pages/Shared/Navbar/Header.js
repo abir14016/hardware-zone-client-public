@@ -1,6 +1,6 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Container, Nav, Navbar, NavDropdown, OverlayTrigger, Popover } from 'react-bootstrap';
+import { Container, Nav, Navbar, OverlayTrigger, Popover } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
@@ -58,17 +58,6 @@ const Header = () => {
                         <Nav.Link href="home#inventories">Inventories</Nav.Link>
                     </Nav>
                     <Nav>
-
-                        {/* {
-                            user && <>
-                                <NavDropdown className='bg-dark' title="Dashboard" id="collasible-nav-dropdown">
-                                    <NavDropdown.Item as={Link} to="manageinventories">Manage Inventories</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="addinventory">Add Inventories</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="myinventories">My Inventories</NavDropdown.Item>
-                                </NavDropdown>
-                            </>
-                        } */}
-
 
                         <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
                         {
