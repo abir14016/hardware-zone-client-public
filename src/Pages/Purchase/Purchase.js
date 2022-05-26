@@ -5,15 +5,39 @@ import UseToolDetail from '../../Hooks/UseToolDetail';
 import './Purchase.css';
 import { Button, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import axios from 'axios';
 
 const Purchase = () => {
+    const [user] = useAuthState(auth);
     const { toolId } = useParams();
     const [tool] = UseToolDetail(toolId);
     const { _id, name, image, price, minimumOrder, availableQuantity, description } = tool;
 
     const handlePurchase = event => {
         event.preventDefault();
-        toast.success("Hello from toastify");
+        const email = event.target.email.value;
+        const address = event.target.address.value;
+        const phone = event.target.phone.value;
+        const tool = event.target.tool.value;
+        const quantity = event.target.quantity.value;
+
+        const data = {
+            email: email,
+            address: address,
+            phone: phone,
+            tool: tool,
+            quantity: quantity
+        }
+
+        axios.post('http://localhost:5000/myorder', data)
+            .then(response => {
+                const { data } = response;
+                if (data.insertedId) {
+                    // console.log(data);
+                }
+            })
     }
 
 
@@ -49,8 +73,8 @@ const Purchase = () => {
                 <Form onSubmit={handlePurchase} className='order-form bg-dark text-white px-3 py-4'>
                     <h3 className='text-center'>Order Now</h3>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" name='email' placeholder="Enter email" required />
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="email" name='email' defaultValue={user.email} readOnly />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicAddress">
@@ -59,14 +83,20 @@ const Purchase = () => {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPhone">
-                        <Form.Label>Phone Number</Form.Label>
-                        <Form.Control type="text" name='phone' placeholder="Your Phone" required />
+                        <Form.Label>Phone</Form.Label>
+                        <Form.Control type="text" name='phone' placeholder="Your Phone Number" required />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasictool">
+                        <Form.Label>Tool Name</Form.Label>
+                        <Form.Control type="text" name='tool' defaultValue={name} readOnly />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicquantity">
                         <Form.Label>Order Quantity</Form.Label>
                         <Form.Control type="number" name='quantity' defaultValue={minimumOrder} min={minimumOrder} max={availableQuantity} placeholder="Enter Quantity" />
                     </Form.Group>
+
                     <Button variant="primary" type="submit">
                         Purchase
                     </Button>

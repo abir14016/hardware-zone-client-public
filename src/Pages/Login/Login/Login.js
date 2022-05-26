@@ -70,28 +70,6 @@ const Login = () => {
                 <p>New to Hardware Zone? <Link to="/register" className='text-primary text-decoration-none'>Please Register</Link></p>
 
                 <p>Forget password?<button className='text-primary text-decoration-none btn btn-link'>Reset Password</button></p>
-
-                {/* <div>
-                    <div className='d-flex align-items-center'>
-                        <div style={{ height: "1px" }} className='bg-primary w-50'></div>
-                        <p className='mt-2 px-2'>or</p>
-                        <div style={{ height: "1px" }} className='bg-primary w-50'></div>
-                    </div>
-
-                    {(gLoading) && <p className='text-warning'>Loading...</p>}
-                    {(gError) && gErrorElement}
-
-
-                    <div>
-                        <button
-                            onClick={() => signInWithGoogle()}
-                            className='btn btn-primary d-block mx-auto social-login-button'>
-                            <img style={{ width: "32px" }} src={google} alt="" />
-                            <span className='px-2'>Google sign in</span>
-                        </button>
-                    </div>
-                </div> */}
-
             </Form>
             <div className='form-container bg-dark text-white p-4 rounded'>
                 <div className='d-flex align-items-center'>
