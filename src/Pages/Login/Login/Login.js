@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImage from '../../../images/utilities/login-logo.png';
@@ -20,9 +20,11 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
 
-    if (gUser || eUser) {
-        navigate(from, { replace: true });
-    }
+    useEffect(() => {
+        if (gUser || eUser) {
+            navigate(from, { replace: true });
+        }
+    }, [gUser, eUser, from, navigate])
 
     let eErrorElement;
     if (eError) {

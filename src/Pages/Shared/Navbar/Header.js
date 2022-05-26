@@ -59,7 +59,7 @@ const Header = () => {
                     </Nav>
                     <Nav>
 
-                        {
+                        {/* {
                             user && <>
                                 <NavDropdown className='bg-dark' title="Dashboard" id="collasible-nav-dropdown">
                                     <NavDropdown.Item as={Link} to="manageinventories">Manage Inventories</NavDropdown.Item>
@@ -67,10 +67,13 @@ const Header = () => {
                                     <NavDropdown.Item as={Link} to="myinventories">My Inventories</NavDropdown.Item>
                                 </NavDropdown>
                             </>
-                        }
+                        } */}
 
 
                         <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
+                        {
+                            user && <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
+                        }
                         {user ? <button onClick={handleSignOut} className='btn btn-link text-white text-decoration-none'>Sign Out</button> :
                             <Nav.Link as={Link} to="/login">Login</Nav.Link>}
 
