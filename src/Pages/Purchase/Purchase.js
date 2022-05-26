@@ -36,7 +36,6 @@ const Purchase = () => {
                             <p>Price: ${price}</p>
                             <p>Available: {availableQuantity}</p>
                             <p>Min Order: {minimumOrder}</p>
-                            <button className='btn btn-success'>Delivered</button>
                         </div>
                     </div>
                 </div>
