@@ -4,18 +4,27 @@ import { Link } from 'react-router-dom';
 import loginImage from '../../../images/utilities/login-logo.png';
 import google from '../../../images/social/google-logo.png';
 import './Login.css';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
 
-    if (gUser) {
-        console.log(gUser);
+    if (gUser || user) {
+        console.log(gUser || user);
     }
 
     const handleLogin = event => {
         event.preventDefault();
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        signInWithEmailAndPassword(email, password);
     }
     return (
         <div className='pt-5'>

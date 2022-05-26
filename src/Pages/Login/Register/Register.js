@@ -17,16 +17,19 @@ const Register = () => {
 
     const [
         createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
+        Euser,
+        Eloading,
+        Eerror,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
+
+    if (Euser) {
+        console.log(Euser);
+    }
+
     let errorElement;
-    let errormessage;
-    if (error) {
-        errormessage = error.message.slice(9, error?.message?.length);
-        errorElement = <p style={{ color: "red" }}>Error: {errormessage}</p>
+    if (Eerror) {
+        errorElement = <p style={{ color: "red" }}>Error: {Eerror.message}</p>
     }
 
     const [updateProfile] = useUpdateProfile(auth);
@@ -42,11 +45,12 @@ const Register = () => {
 
 
 
-    const handleRegister = (event) => {
+    const handleRegister = async (event) => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
-        createUserWithEmailAndPassword(email, password);
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name, photoURL: photoURL });
     }
 
     return (
@@ -90,7 +94,7 @@ const Register = () => {
                     </Button>
                 </div>
                 <p>Already have an acount? <Link to="/login" className='text-primary text-decoration-none'>Please Login</Link></p>
-                {error && errorElement}
+                {Eerror && errorElement}
 
                 {
                     <p style={{ color: "red" }}>{err}</p>

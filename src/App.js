@@ -6,13 +6,13 @@ import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
 import Purchase from "./Pages/Purchase/Purchase";
 import Footer from "./Pages/Shared/Footer/Footer";
-import Navbar from "./Pages/Shared/Navbar/Navbar";
+import Header from "./Pages/Shared/Navbar/Header";
 import NotFound from "./Pages/Shared/NotFound/NotFound";
 
 function App() {
   return (
     <div className="App">
-      <Navbar></Navbar>
+      <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="tool/:toolId" element={<Purchase></Purchase>}></Route>

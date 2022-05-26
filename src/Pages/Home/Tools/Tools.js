@@ -23,7 +23,7 @@ const Tools = () => {
                 }
             </div>
             <div className='container text-center mt-5'>
-                <Link className='btn btn-dark' to="/manageinventories">Manage Inventories</Link>
+                <Link className='btn btn-dark' to="/manageinventories">See All</Link>
             </div>
         </div>
     );
