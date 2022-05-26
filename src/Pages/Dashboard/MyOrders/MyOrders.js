@@ -30,6 +30,8 @@ const MyOrders = () => {
                             myOrders.map(myOrder => <MyOrder
                                 key={myOrder._id}
                                 myOrder={myOrder}
+                                myOrders={myOrders}
+                                setMyOrders={setMyOrders}
                             ></MyOrder>)
                         }
                     </tbody>
