@@ -31,46 +31,49 @@ const MyProfile = () => {
             });
     }
     return (
-        <div className='my-profile-container'>
-            <div>
-                <Card className='shadow-lg profile-card'>
-                    <Card.Img variant="top" src={user?.photoURL} />
-                    <Card.Body>
-                        <Card.Title>{user?.displayName}</Card.Title>
-                        <Card.Text className='text-danger'>
-                            {user?.email}
-                        </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                </Card>
-            </div>
+        <div className='py-5 bg-light'>
+            <h3 className='text-center text-primary'>Update Your Information</h3>
+            <div className='my-profile-container'>
+                <div>
+                    <Card className='shadow-lg profile-card'>
+                        <Card.Img variant="top" src={user?.photoURL} />
+                        <Card.Body>
+                            <Card.Title>{user?.displayName}</Card.Title>
+                            <Card.Text className='text-danger'>
+                                {user?.email}
+                            </Card.Text>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                    </Card>
+                </div>
 
-            <div>
-                <Form onSubmit={handleSave} className='shadow-lg p-5 rounded'>
-                    <Form.Group className="mb-3" controlId="formBasicEducation">
-                        <Form.Label>Your Degree</Form.Label>
-                        <Form.Control type="text" name="degree" placeholder="Your Education" required />
-                    </Form.Group>
+                <div>
+                    <Form onSubmit={handleSave} className='shadow-lg p-5 bg-white rounded'>
+                        <Form.Group className="mb-3" controlId="formBasicEducation">
+                            <Form.Label>Your Degree</Form.Label>
+                            <Form.Control type="text" name="degree" placeholder="Your Education" required />
+                        </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicDistrict">
-                        <Form.Label>District</Form.Label>
-                        <Form.Control type="text" name="district" placeholder="Enter Your District" required />
-                    </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicDistrict">
+                            <Form.Label>District</Form.Label>
+                            <Form.Control type="text" name="district" placeholder="Enter Your District" required />
+                        </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicPhone">
-                        <Form.Label>Phone Number</Form.Label>
-                        <Form.Control type="text" name="phone" placeholder="Enter Your Phone Number" required />
-                    </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPhone">
+                            <Form.Label>Phone Number</Form.Label>
+                            <Form.Control type="text" name="phone" placeholder="Enter Your Phone Number" required />
+                        </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicLinkedIn">
-                        <Form.Label>LinkedIn Profile</Form.Label>
-                        <Form.Control type="text" name="linkedIn" placeholder="Your LinkedIn Profile Link" required />
-                    </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicLinkedIn">
+                            <Form.Label>LinkedIn Profile</Form.Label>
+                            <Form.Control type="text" name="linkedIn" placeholder="Your LinkedIn Profile Link" required />
+                        </Form.Group>
 
-                    <Button variant="primary" type="submit">
-                        Save
-                    </Button>
-                </Form>
+                        <Button variant="primary" type="submit">
+                            Save
+                        </Button>
+                    </Form>
+                </div>
             </div>
         </div>
     );

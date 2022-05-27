@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -16,7 +15,7 @@ const MyReviews = () => {
         const review = event.target.review.value;
         const ratings = event.target.ratings.value;
 
-        const data = {
+        const myReview = {
             email: email,
             name: name,
             image: image,
@@ -24,13 +23,35 @@ const MyReviews = () => {
             ratings: ratings
         }
 
-        axios.post(`http://localhost:5000/myreview`, data)
-            .then(response => {
-                const { data } = response;
-                if (data.insertedId) {
+        // axios.post(`http://localhost:5000/myreview`, data)
+        //     .then(response => {
+        //         const { data } = response;
+        //         if (data.insertedId) {
+        //             toast.success("Review Added");
+        //         }
+        //     });
+
+        const url = `http://localhost:5000/myreview/${email}`;
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(myReview)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.upsertedId) {
                     toast.success("Review Added");
                 }
-            });
+                if (data.modifiedCount > 0) {
+                    toast.success("Review Updated");
+                }
+                if (!data.modifiedCount && !data.upsertedId) {
+                    toast.error("Failed to Update Review");
+                }
+                event.target.reset();
+            })
     }
     return (
         <div>
@@ -58,7 +79,7 @@ const MyReviews = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicRatings">
                     <Form.Label>Ratings</Form.Label>
-                    <Form.Control type="text" name='ratings' placeholder='Your Ratings' required />
+                    <Form.Control type="number" min={1} max={5} step={1} name='ratings' placeholder='Your Ratings' required />
                 </Form.Group>
 
                 <div className='text-center'>
