@@ -6,6 +6,7 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import google from '../../../images/social/google-logo.png';
 import auth from '../../../firebase.init';
 import registerImage from '../../../images/utilities/register-logo.png';
+import UseToken from '../../../Hooks/UseToken';
 
 const Register = () => {
     const [agree, setAgree] = useState(false);
@@ -19,10 +20,11 @@ const Register = () => {
         eLoading,
         eError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [token] = UseToken(eUser || gUser);
 
     const navigate = useNavigate();
-    if (eUser || gUser) {
-        navigate('/')
+    if (token) {
+        navigate('/');
     }
 
     let eErrorElement;
