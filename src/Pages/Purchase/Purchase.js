@@ -35,7 +35,7 @@ const Purchase = () => {
             .then(response => {
                 const { data } = response;
                 if (data.insertedId) {
-                    toast.success("Order Successfull")
+                    toast.success("Order Successfull");
                 }
             })
     }
