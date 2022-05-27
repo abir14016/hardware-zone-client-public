@@ -1,0 +1,8 @@
+.review {
+  max-width: 18rem;
+}
+.reviwer-image {
+  width: 60px;
+  border-radius: 50%;
+  border: 2px solid blueviolet;
+}

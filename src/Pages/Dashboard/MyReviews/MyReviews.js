@@ -12,12 +12,16 @@ const MyReviews = () => {
         event.preventDefault();
         const email = event.target.email.value;
         const name = event.target.name.value;
+        const image = event.target.image.value;
         const review = event.target.review.value;
+        const ratings = event.target.ratings.value;
 
         const data = {
             email: email,
             name: name,
-            review: review
+            image: image,
+            userReview: review,
+            ratings: ratings
         }
 
         axios.post(`http://localhost:5000/myreview`, data)
@@ -26,7 +30,7 @@ const MyReviews = () => {
                 if (data.insertedId) {
                     toast.success("Review Added");
                 }
-            })
+            });
     }
     return (
         <div>
@@ -39,12 +43,22 @@ const MyReviews = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" name='address' defaultValue={user.displayName} readOnly />
+                    <Form.Control type="text" name='name' defaultValue={user.displayName} readOnly />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicImage">
+                    <Form.Label>Photo URL</Form.Label>
+                    <Form.Control type="text" name='image' defaultValue={user.photoURL} readOnly />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicReview">
                     <Form.Label>Review</Form.Label>
                     <Form.Control type="text" as="textarea" name='review' placeholder='Put Your review' required />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicRatings">
+                    <Form.Label>Ratings</Form.Label>
+                    <Form.Control type="text" name='ratings' placeholder='Your Ratings' required />
                 </Form.Group>
 
                 <div className='text-center'>
