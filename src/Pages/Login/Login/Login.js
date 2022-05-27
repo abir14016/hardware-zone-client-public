@@ -6,6 +6,7 @@ import google from '../../../images/social/google-logo.png';
 import './Login.css';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import UseToken from '../../../Hooks/UseToken';
 
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -16,15 +17,17 @@ const Login = () => {
         eError,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [token] = UseToken(eUser || gUser)
+
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (gUser || eUser) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [gUser, eUser, from, navigate])
+    }, [token, from, navigate])
 
     let eErrorElement;
     if (eError) {

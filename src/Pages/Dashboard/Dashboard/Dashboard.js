@@ -19,6 +19,15 @@ const Dashboard = () => {
                     <li className="nav-item">
                         <Link className="nav-link active fw-bold" to="/dashboard/myprofile">My Profile</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link active fw-bold" to="/dashboard/managetools">Manage Tools</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link active fw-bold" to="/dashboard/addtools">Add Tools</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link active fw-bold" to="/dashboard/makeadmin">Make Admin</Link>
+                    </li>
                 </ul>
             </div>
             <div className='col-8 col-md-10'>

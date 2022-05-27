@@ -1,7 +1,10 @@
 // import './App.css';
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import AddTools from "./Pages/Dashboard/AddTools/AddTools";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+import MakeAdmin from "./Pages/Dashboard/makeAdmin/MakeAdmin";
+import ManageTools from "./Pages/Dashboard/ManageTools/ManageTools";
 import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
 import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
 import MyReviews from "./Pages/Dashboard/MyReviews/MyReviews";
@@ -31,6 +34,9 @@ function App() {
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path="myreviews" element={<MyReviews></MyReviews>}></Route>
           <Route path="myprofile" element={<MyProfile></MyProfile>}></Route>
+          <Route path="managetools" element={<ManageTools></ManageTools>}></Route>
+          <Route path="addtools" element={<AddTools></AddTools>}></Route>
+          <Route path="makeadmin" element={<MakeAdmin></MakeAdmin>}></Route>
         </Route>
         <Route path="login" element={<Login></Login>}></Route>
         <Route path="register" element={<Register></Register>}></Route>
