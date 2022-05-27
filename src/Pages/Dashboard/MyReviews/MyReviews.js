@@ -35,7 +35,7 @@ const MyReviews = () => {
     return (
         <div>
             <Form onSubmit={handleAddReview} className='order-form bg-dark text-white px-3 py-4'>
-                <h3 className='text-center'>Order Now</h3>
+                <h3 className='text-center'>Add Review</h3>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" name='email' defaultValue={user.email} readOnly />
