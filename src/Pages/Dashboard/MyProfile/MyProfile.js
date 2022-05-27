@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -10,25 +9,50 @@ const MyProfile = () => {
     const [user] = useAuthState(auth);
     const handleSave = event => {
         event.preventDefault();
+        const email = user.email;
         const degree = event.target.degree.value;
         const district = event.target.district.value;
         const phone = event.target.phone.value;
         const linkedIn = event.target.linkedIn.value;
 
-        const data = {
+        const userProfile = {
+            email: email,
             degree: degree,
             district: district,
             phone: phone,
             linkedIn: linkedIn
         }
 
-        axios.post(`http://localhost:5000/userprofile`, data)
-            .then(response => {
-                const { data } = response;
-                if (data.insertedId) {
-                    toast.success("Information Saved");
+        const url = `http://localhost:5000/userprofile/${email}`;
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userProfile)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.upsertedId) {
+                    toast.success("Profile Added");
                 }
-            });
+                if (data.modifiedCount > 0) {
+                    toast.success("Profile Updated");
+                }
+                if (!data.modifiedCount && !data.upsertedId) {
+                    toast.error("Failed to Update Profile");
+                }
+                event.target.reset();
+            })
+
+        // axios.post(`http://localhost:5000/userprofile`, data)
+        //     .then(response => {
+        //         const { data } = response;
+        //         if (data.insertedId) {
+        //             toast.success("Information Saved");
+        //         }
+        //     });
+
     }
     return (
         <div className='py-5 bg-light'>
