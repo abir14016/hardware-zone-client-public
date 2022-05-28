@@ -27,7 +27,7 @@ const MyOrders = () => {
                 return res.json()
             })
             .then(data => setMyOrders(data))
-    }, [email]);
+    }, [navigate, email]);
     return (
         <div className='my-orders'>
             <h3 className='text-center'>My Order List</h3>

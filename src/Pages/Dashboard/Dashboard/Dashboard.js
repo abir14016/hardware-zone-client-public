@@ -2,32 +2,44 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import UseAdmin from '../../../Hooks/UseAdmin';
+import UseNonAdmin from '../../../Hooks/UseNonAdmin';
 import './Dashboard.css';
 
 const Dashboard = () => {
     const [user] = useAuthState(auth);
+    const [admin] = UseAdmin(user);
+    const [nonAdmin] = UseNonAdmin(user);
     return (
         <div className='row'>
             <div className='border col-4 col-md-2 side-nav shadow-lg'>
                 <ul className="nav flex-column">
-                    <li className="nav-item">
-                        <Link className="nav-link active fw-bold" to="/dashboard">My Orders</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active fw-bold" to="/dashboard/myreviews">My Reviews</Link>
-                    </li>
+                    {
+                        nonAdmin && <li className="nav-item"><Link className="nav-link active fw-bold" to="/dashboard">My Orders</Link></li>
+                    }
+                    {
+                        nonAdmin && <li className="nav-item">
+                            <Link className="nav-link active fw-bold" to="/dashboard/myreviews">My Reviews</Link>
+                        </li>
+                    }
                     <li className="nav-item">
                         <Link className="nav-link active fw-bold" to="/dashboard/myprofile">My Profile</Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active fw-bold" to="/dashboard/managetools">Manage Tools</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active fw-bold" to="/dashboard/addtools">Add Tools</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link active fw-bold" to="/dashboard/makeadmin">Make Admin</Link>
-                    </li>
+                    {
+                        admin && <li className="nav-item">
+                            <Link className="nav-link active fw-bold" to="/dashboard/managetools">Manage Tools</Link>
+                        </li>
+                    }
+                    {
+                        admin && <li className="nav-item">
+                            <Link className="nav-link active fw-bold" to="/dashboard/addtools">Add Tools</Link>
+                        </li>
+                    }
+
+                    {
+                        admin && <li className="nav-item">
+                            <Link className="nav-link active fw-bold" to="/dashboard">Make Admin</Link></li>
+                    }
                 </ul>
             </div>
             <div className='col-8 col-md-10'>

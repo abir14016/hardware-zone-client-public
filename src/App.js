@@ -1,6 +1,10 @@
 // import './App.css';
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import auth from "./firebase.init";
+import UseAdmin from "./Hooks/UseAdmin";
+import UseNonAdmin from "./Hooks/UseNonAdmin";
 import AddTools from "./Pages/Dashboard/AddTools/AddTools";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import MakeAdmin from "./Pages/Dashboard/makeAdmin/MakeAdmin";
@@ -11,13 +15,18 @@ import MyReviews from "./Pages/Dashboard/MyReviews/MyReviews";
 import Home from "./Pages/Home/Home/Home";
 import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
+import RequireAdmin from "./Pages/Login/RequireAdmin/RequireAdmin";
 import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
+import RequireNonAdmin from "./Pages/Login/RequireNonAdmin/RequireNonAdmin";
 import Purchase from "./Pages/Purchase/Purchase";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Header from "./Pages/Shared/Navbar/Header";
 import NotFound from "./Pages/Shared/NotFound/NotFound";
 
 function App() {
+  const [user] = useAuthState(auth)
+  const [admin] = UseAdmin(user);
+  const [nonAdmin] = UseNonAdmin(user)
   return (
     <div className="App">
       <Header></Header>
@@ -31,12 +40,14 @@ function App() {
         <Route path="dashboard" element={
           <RequireAuth><Dashboard></Dashboard></RequireAuth>
         }>
-          <Route index element={<MyOrders></MyOrders>}></Route>
-          <Route path="myreviews" element={<MyReviews></MyReviews>}></Route>
+          {nonAdmin && <Route index element={<RequireNonAdmin><MyOrders></MyOrders></RequireNonAdmin>}></Route>}
+          <Route path="myreviews" element={<RequireNonAdmin><MyReviews></MyReviews></RequireNonAdmin>}></Route>
           <Route path="myprofile" element={<MyProfile></MyProfile>}></Route>
-          <Route path="managetools" element={<ManageTools></ManageTools>}></Route>
-          <Route path="addtools" element={<AddTools></AddTools>}></Route>
-          <Route path="makeadmin" element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route path="managetools" element={<RequireAdmin><ManageTools></ManageTools></RequireAdmin>}></Route>
+          <Route path="addtools" element={<RequireAdmin><AddTools></AddTools></RequireAdmin>}></Route>
+          {
+            admin && <Route index element={<RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin>}></Route>
+          }
         </Route>
         <Route path="login" element={<Login></Login>}></Route>
         <Route path="register" element={<Register></Register>}></Route>
