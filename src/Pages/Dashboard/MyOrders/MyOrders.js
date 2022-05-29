@@ -38,6 +38,7 @@ const MyOrders = () => {
                             <th scope="col">Tool</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Manage</th>
+                            <th scope="col">Payment</th>
                         </tr>
                     </thead>
                     <tbody>

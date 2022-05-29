@@ -22,6 +22,9 @@ import Purchase from "./Pages/Purchase/Purchase";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Header from "./Pages/Shared/Navbar/Header";
 import NotFound from "./Pages/Shared/NotFound/NotFound";
+import ManageOrders from "./Pages/Dashboard/ManageOrders/ManageOrders";
+import Payment from "./Pages/Dashboard/Payment/Payment";
+import SupportSession from './Pages/Home/SupportSession/SupportSession';
 
 function App() {
   const [user] = useAuthState(auth)
@@ -45,10 +48,15 @@ function App() {
           <Route path="myprofile" element={<MyProfile></MyProfile>}></Route>
           <Route path="managetools" element={<RequireAdmin><ManageTools></ManageTools></RequireAdmin>}></Route>
           <Route path="addtools" element={<RequireAdmin><AddTools></AddTools></RequireAdmin>}></Route>
+          <Route path="manageorders" element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}></Route>
           {
             admin && <Route index element={<RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin>}></Route>
           }
+          <Route path="myorder/:myorderId" element={<Payment></Payment>}></Route>
         </Route>
+
+        <Route path="supportsession" element={<SupportSession></SupportSession>}></Route>
+
         <Route path="login" element={<Login></Login>}></Route>
         <Route path="register" element={<Register></Register>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>

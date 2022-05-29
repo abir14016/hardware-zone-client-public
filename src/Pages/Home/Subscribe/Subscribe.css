@@ -1,0 +1,15 @@
+.subscribe-container {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.sub-division {
+  width: 50%;
+}
+@media only screen and (max-width: 576px) {
+  .sub-division {
+    width: 100%;
+  }
+  .sub-division p {
+    display: none;
+  }
+}

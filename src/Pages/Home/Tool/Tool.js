@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
+import UseAdmin from '../../../Hooks/UseAdmin';
 import './Tool.css';
 
 const Tool = ({ tool }) => {
+    const [user] = useAuthState(auth);
+    const [admin] = UseAdmin(user);
     const [seeMore, setSeeMore] = useState(true);
     const [seeLess, setSeeLess] = useState(true);
 
@@ -49,7 +54,9 @@ const Tool = ({ tool }) => {
                 <h6 className='text-warning fs-4'>$ {price}</h6>
             </div>
             <div className='text-center'>
-                <button onClick={() => navigateToToolDetail(_id)} className='purchase-button'>PURCHASE</button>
+                {
+                    !admin && <button onClick={() => navigateToToolDetail(_id)} className='purchase-button'>PURCHASE</button>
+                }
             </div>
         </div>
     );

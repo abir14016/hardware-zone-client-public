@@ -40,6 +40,11 @@ const Dashboard = () => {
                         admin && <li className="nav-item">
                             <Link className="nav-link active fw-bold" to="/dashboard">Make Admin</Link></li>
                     }
+
+                    {
+                        admin && <li className="nav-item">
+                            <Link className="nav-link active fw-bold" to="/dashboard/manageorders">Manage Orders</Link></li>
+                    }
                 </ul>
             </div>
             <div className='col-8 col-md-10'>

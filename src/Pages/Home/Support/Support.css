@@ -1,0 +1,30 @@
+.support-division {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.support-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.right {
+  border-radius: 30px;
+}
+.right:hover {
+  transform: scale(1.1);
+  transition: 1.3s 0.1s ease-in-out;
+}
+
+@media only screen and (max-width: 576px) {
+  .support-container {
+    display: block;
+    text-align: center;
+  }
+  .support-image {
+    width: 75%;
+  }
+  .right {
+    width: 75%;
+    margin: 0 auto;
+  }
+}

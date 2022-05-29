@@ -1,0 +1,8 @@
+.partner-image {
+  width: 150px;
+}
+@media only screen and (max-width: 576px) {
+  .partner-image {
+    width: 100px;
+  }
+}

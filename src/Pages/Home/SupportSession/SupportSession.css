@@ -1,0 +1,8 @@
+.supportsession-container {
+  width: 25%;
+}
+@media only screen and (max-width: 576px) {
+  .supportsession-container {
+    width: 75%;
+  }
+}

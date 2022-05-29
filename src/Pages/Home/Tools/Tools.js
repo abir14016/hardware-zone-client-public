@@ -7,16 +7,18 @@ import './Tools.css';
 
 const Tools = () => {
     const [tools] = UseTools();
+    const reversedTools = [...tools].reverse();
+    const homePageTools = reversedTools.slice(0, 6);
 
     return (
         <div className='py-5' id='tools'>
             <div className='text-center'>
                 <img style={{ width: 150 }} src={inventoryImage} alt="" />
             </div>
-            <h1 className='text-center text-primary mb-5'>Explore Now: {tools.length}</h1>
+            <h1 className='text-center text-primary mb-5'>Explore Now: {homePageTools.length}</h1>
             <div className="container tools-container card-deck">
                 {
-                    tools.map(tool => <Tool
+                    homePageTools.map(tool => <Tool
                         key={tool._id}
                         tool={tool}
                     ></Tool>)
