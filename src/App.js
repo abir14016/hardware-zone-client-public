@@ -25,6 +25,8 @@ import NotFound from "./Pages/Shared/NotFound/NotFound";
 import ManageOrders from "./Pages/Dashboard/ManageOrders/ManageOrders";
 import Payment from "./Pages/Dashboard/Payment/Payment";
 import SupportSession from './Pages/Home/SupportSession/SupportSession';
+import Blogs from "./Pages/Blogs/Blogs";
+import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 
 function App() {
   const [user] = useAuthState(auth)
@@ -56,6 +58,8 @@ function App() {
         </Route>
 
         <Route path="supportsession" element={<SupportSession></SupportSession>}></Route>
+        <Route path="blogs" element={<Blogs></Blogs>}></Route>
+        <Route path="myportfolio" element={<MyPortfolio></MyPortfolio>}></Route>
 
         <Route path="login" element={<Login></Login>}></Route>
         <Route path="register" element={<Register></Register>}></Route>

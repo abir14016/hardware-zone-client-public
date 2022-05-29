@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import support from '../../../images/utilities/support.png';
 import './Support.css';
 import ScrollAnimation from 'react-animate-on-scroll';
+import "animate.css/animate.min.css";
 
 const Support = () => {
     return (

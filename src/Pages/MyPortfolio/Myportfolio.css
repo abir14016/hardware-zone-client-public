@@ -1,0 +1,22 @@
+.abir-image {
+  width: 200px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+.skills img {
+  width: 50px;
+  margin: 0px 10px;
+}
+.project-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+}
+@media only screen and (max-width: 576px) {
+  .project-container {
+    display: block;
+  }
+}
+.project-card:hover {
+  opacity: 0.8;
+}

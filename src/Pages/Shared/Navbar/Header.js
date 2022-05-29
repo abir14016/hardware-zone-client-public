@@ -60,11 +60,12 @@ const Header = () => {
                     </Nav>
                     <Nav>
 
+                        <Nav.Link as={Link} to="/myportfolio">My Portfolio</Nav.Link>
                         <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
                         {
                             user && <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
                         }
-                        {user ? <button onClick={handleSignOut} className='btn btn-link text-white text-decoration-none'>Sign Out</button> :
+                        {user ? <p onClick={handleSignOut} className='btn btn-link text-white text-decoration-none'>Sign Out</p> :
                             <Nav.Link as={Link} to="/login">Login</Nav.Link>}
 
 
