@@ -33,7 +33,7 @@ const Purchase = () => {
             price: (priceInt * quantity)
         }
 
-        axios.post(`http://localhost:5000/myorder`, data)
+        axios.post(`https://sleepy-lowlands-12245.herokuapp.com/myorder`, data)
             .then(response => {
                 const { data } = response;
                 if (data.insertedId) {

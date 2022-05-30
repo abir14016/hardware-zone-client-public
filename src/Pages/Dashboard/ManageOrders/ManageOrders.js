@@ -5,7 +5,7 @@ import ManageOrdersRow from '../ManageOrdersRow/ManageOrdersRow';
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/myorder')
+        fetch('https://sleepy-lowlands-12245.herokuapp.com/myorder')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])

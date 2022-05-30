@@ -17,7 +17,7 @@ const Payment = () => {
     // const [order] = UseOrderDetail(orderId);
     // const { tool, quantity, price } = order;
 
-    const url = `http://localhost:5000/myorder/${orderId}`
+    const url = `https://sleepy-lowlands-12245.herokuapp.com/myorder/${orderId}`
     const { data: order, isLoading } = useQuery(['myOrders', orderId], () => fetch(url, {
         method: 'GET',
         headers: {

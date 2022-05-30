@@ -23,7 +23,7 @@ const MyProfile = () => {
             linkedIn: linkedIn
         }
 
-        const url = `http://localhost:5000/userprofile/${email}`;
+        const url = `https://sleepy-lowlands-12245.herokuapp.com/userprofile/${email}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -45,7 +45,7 @@ const MyProfile = () => {
                 event.target.reset();
             })
 
-        // axios.post(`http://localhost:5000/userprofile`, data)
+        // axios.post(`https://sleepy-lowlands-12245.herokuapp.com/userprofile`, data)
         //     .then(response => {
         //         const { data } = response;
         //         if (data.insertedId) {

@@ -7,7 +7,7 @@ const ToolRow = ({ tool, tools, setTools }) => {
     const handleRemoveTool = id => {
         const proced = window.confirm("Are you sure?");
         if (proced) {
-            const url = `http://localhost:5000/tool/${id}`;
+            const url = `https://sleepy-lowlands-12245.herokuapp.com/tool/${id}`;
             fetch(url, {
                 method: "DELETE"
             })

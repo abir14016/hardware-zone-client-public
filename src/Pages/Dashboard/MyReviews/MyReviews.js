@@ -23,7 +23,7 @@ const MyReviews = () => {
             ratings: ratings
         }
 
-        // axios.post(`http://localhost:5000/myreview`, data)
+        // axios.post(`https://sleepy-lowlands-12245.herokuapp.com/myreview`, data)
         //     .then(response => {
         //         const { data } = response;
         //         if (data.insertedId) {
@@ -31,7 +31,7 @@ const MyReviews = () => {
         //         }
         //     });
 
-        const url = `http://localhost:5000/myreview/${email}`;
+        const url = `https://sleepy-lowlands-12245.herokuapp.com/myreview/${email}`;
         fetch(url, {
             method: "PUT",
             headers: {

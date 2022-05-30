@@ -29,7 +29,7 @@ const AddTools = () => {
             minimumOrder: minimumOrder
         }
 
-        axios.post(`http://localhost:5000/addtool`, data)
+        axios.post(`https://sleepy-lowlands-12245.herokuapp.com/addtool`, data)
             .then(response => {
                 const { data } = response;
                 if (data.insertedId) {

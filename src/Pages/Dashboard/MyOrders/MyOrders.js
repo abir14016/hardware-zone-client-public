@@ -13,7 +13,7 @@ const MyOrders = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myorders/myorder/${email}`, {
+        fetch(`https://sleepy-lowlands-12245.herokuapp.com/myorders/myorder/${email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

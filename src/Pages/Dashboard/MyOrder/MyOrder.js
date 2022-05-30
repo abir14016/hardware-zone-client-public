@@ -14,7 +14,7 @@ const MyOrder = ({ myOrder, myOrders, setMyOrders }) => {
     const handleCancel = id => {
         const proced = window.confirm("Are you sure?");
         if (proced) {
-            const url = `http://localhost:5000/myorder/${id}`;
+            const url = `https://sleepy-lowlands-12245.herokuapp.com/myorder/${id}`;
             fetch(url, {
                 method: "DELETE"
             })

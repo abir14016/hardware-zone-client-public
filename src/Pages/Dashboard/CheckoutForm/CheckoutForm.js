@@ -15,7 +15,7 @@ const CheckoutForm = ({ order }) => {
     const [clientSecret, setClientSecret] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://sleepy-lowlands-12245.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -78,7 +78,7 @@ const CheckoutForm = ({ order }) => {
             //     transectionId: paymentIntent.id
             // }
 
-            // fetch(`http://localhost:5000/myorder/${_id}`, {
+            // fetch(`https://sleepy-lowlands-12245.herokuapp.com/myorder/${_id}`, {
             //     method: 'PATCH',
             //     headers: {
             //         'content-type': 'application/json',
