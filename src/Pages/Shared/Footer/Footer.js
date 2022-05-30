@@ -21,7 +21,7 @@ const Footer = () => {
                             </ul>
                         </div>
                         <div className="col-md-3 col-6 item">
-                            <Link className='footer-link' to="/addinventory">Add</Link>
+                            <Link className='footer-link' to="/myportfolio">Portfolio</Link>
                             <ul>
                                 <li>Company</li>
                                 <li>Team</li>
@@ -29,7 +29,7 @@ const Footer = () => {
                             </ul>
                         </div>
                         <div className="col-md-3 col-6 item">
-                            <Link className='footer-link' to="/manageinventories">Manage</Link>
+                            <Link className='footer-link' to="/blogs">Blogs</Link>
                             <ul>
                                 <li>Company</li>
                                 <li>Team</li>

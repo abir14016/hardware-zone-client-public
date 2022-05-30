@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import './MyOrder.css'
 
 const MyOrder = ({ myOrder, myOrders, setMyOrders }) => {
-    const { _id, tool, quantity } = myOrder;
+    const { _id, tool, quantity, price } = myOrder;
 
     const navigate = useNavigate()
     const navigateToPayment = id => {
@@ -32,6 +32,7 @@ const MyOrder = ({ myOrder, myOrders, setMyOrders }) => {
         <tr>
             <td><h6>{tool}</h6></td>
             <td><h6>{quantity}</h6></td>
+            <td><h6>{price}</h6></td>
             <td>
                 <button onClick={() => handleCancel(_id)} className='btn btn-danger'>cancel</button>
             </td>

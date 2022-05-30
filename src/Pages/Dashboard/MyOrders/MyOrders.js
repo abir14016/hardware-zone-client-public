@@ -8,14 +8,15 @@ import './MyOrders.css';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth)
-    const email = user.email;
+    const email = user?.email;
     const [myOrders, setMyOrders] = useState([]);
     const navigate = useNavigate();
+
     useEffect(() => {
         fetch(`http://localhost:5000/myorder?email=${email}`, {
             method: 'GET',
             headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => {
@@ -27,7 +28,8 @@ const MyOrders = () => {
                 return res.json()
             })
             .then(data => setMyOrders(data))
-    }, [navigate, email]);
+    }, [user, email, navigate]);
+
     return (
         <div className='my-orders'>
             <h3 className='text-center'>My Order List</h3>
@@ -37,6 +39,7 @@ const MyOrders = () => {
                         <tr>
                             <th scope="col">Tool</th>
                             <th scope="col">Quantity</th>
+                            <th scope="col">Price($)</th>
                             <th scope="col">Manage</th>
                             <th scope="col">Payment</th>
                         </tr>

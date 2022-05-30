@@ -14,6 +14,7 @@ const Purchase = () => {
     const { toolId } = useParams();
     const [tool] = UseToolDetail(toolId);
     const { _id, name, image, price, minimumOrder, availableQuantity, description } = tool;
+    const priceInt = parseInt(price)
 
     const handlePurchase = event => {
         event.preventDefault();
@@ -21,14 +22,15 @@ const Purchase = () => {
         const address = event.target.address.value;
         const phone = event.target.phone.value;
         const tool = event.target.tool.value;
-        const quantity = event.target.quantity.value;
+        const quantity = parseInt(event.target.quantity.value);
 
         const data = {
             email: email,
             address: address,
             phone: phone,
             tool: tool,
-            quantity: quantity
+            quantity: quantity,
+            price: (priceInt * quantity)
         }
 
         axios.post(`http://localhost:5000/myorder`, data)

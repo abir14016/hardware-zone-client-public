@@ -1,10 +1,21 @@
-# Getting Started with Create React App
+# Hardware Zone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My Website Link: [Hardware Zone](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Technology I Used
 
-In the project directory, you can run:
+- React as Javascript Libray
+- HTML, CSS, Bootstrap
+- Javascript
+- Firebase Authentication
+- Node.js
+- Express.js
+- Mongodb
+- Stripe payment system
+
+## Purpuse of this project
+
+- To build a great application for a tools manufacturar company
 
 ### `npm start`
 

@@ -66,17 +66,17 @@ const AddTools = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicPrice">
                     <Form.Label>Price(per quantity)</Form.Label>
-                    <Form.Control type="number" min={700} max={2000} name='price' placeholder='Price' required />
+                    <Form.Control type="number" min={1} max={30} name='price' placeholder='Price' required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicQuantity">
                     <Form.Label>Quantity</Form.Label>
-                    <Form.Control type="number" min={2000} max={7000} name='quantity' placeholder='Quantity' required />
+                    <Form.Control type="number" min={1} max={15} name='quantity' placeholder='Quantity' required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicOrder">
                     <Form.Label>Minimum Order Quantity</Form.Label>
-                    <Form.Control type="number" min={500} max={7000} name='minOrder' placeholder='Minimum Order' required />
+                    <Form.Control type="number" min={1} max={15} name='minOrder' placeholder='Minimum Order' required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicDescription">

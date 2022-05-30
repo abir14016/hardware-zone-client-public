@@ -17,22 +17,11 @@ const Banner = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h1 className='text-warning fw-bolder'>Exercise Is The Success</h1>
-                        <p>You should exercise regularly to become fit</p>
+                        <h1 className='text-warning fw-bolder'>Tools Manufucturer</h1>
+                        <p>biggest tools manufacturer company in world</p>
                     </Carousel.Caption>
                 </Carousel.Item>
-                {/* <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={banner4}
-                        alt="Second slide"
-                    />
 
-                    <Carousel.Caption>
-                        <h1 className='text-warning fw-bolder'>Be Focused And Concentrated</h1>
-                        <p>You should be more focused to get success</p>
-                    </Carousel.Caption>
-                </Carousel.Item> */}
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
@@ -41,8 +30,8 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption>
-                        <h1 className='text-warning fw-bolder'>Work Hard On the Gym</h1>
-                        <p>Today's Pain will make you stronger</p>
+                        <h1 className='text-warning fw-bolder'>Hardware Manufucturer</h1>
+                        <p>biggest hardware manufacturer company in world</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -53,8 +42,8 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption>
-                        <h1 className='text-warning fw-bolder'>Keep Fighiting Untill Win</h1>
-                        <p>Always be calm and focused.</p>
+                        <h1 className='text-warning fw-bolder'>Biggest Supplier of Hardware</h1>
+                        <p>you can always keep trust on us.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
