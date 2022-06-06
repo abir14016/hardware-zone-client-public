@@ -16,6 +16,7 @@ My Website Link: [Hardware Zone](https://resonant-frangollo-feebf1.netlify.app/)
 ## Purpuse of this project
 
 - To build a great application for a tools manufacturar company
+- Different dashboard for users and admin
 
 ### `npm start`
 
