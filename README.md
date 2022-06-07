@@ -13,6 +13,13 @@ My Website Link: [Hardware Zone](https://resonant-frangollo-feebf1.netlify.app/)
 - Mongodb
 - Stripe payment system
 
+## About This Project
+
+- It’s a complete website with backend integration(node.js) for a hardware/tools manufacture company.
+- There is a different dashboard for user and admin.
+- Payment method implemented with stripe
+- 2 ways of login (authentication) system
+
 ## Purpuse of this project
 
 - To build a great application for a tools manufacturar company
